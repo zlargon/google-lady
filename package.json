@@ -1,0 +1,24 @@
+{
+  "name": "google-lady",
+  "version": "0.0.1",
+  "description": "Google text-to-speech URL generator (CLI)",
+  "bin": {
+    "google-lady": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zlargon/google-lady.git"
+  },
+  "author": "zlargon <zlargon@icloud.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zlargon/google-lady/issues"
+  },
+  "homepage": "https://github.com/zlargon/google-lady#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "copy-paste": "^1.3.0",
+    "google-tts-api": "0.0.1"
+  },
+  "lang": "en"
+}
