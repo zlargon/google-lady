@@ -16,11 +16,14 @@
   },
   "homepage": "https://github.com/zlargon/google-lady#readme",
   "dependencies": {
+    "co": "^4.6.0",
     "commander": "^2.9.0",
     "copy-paste": "^1.3.0",
-    "google-tts-api": "0.0.1"
+    "google-tts-api": "0.0.1",
+    "googleapis": "^15.0.0"
   },
   "config": {
-    "lang": "en"
+    "lang": "en",
+    "apiKey": ""
   }
 }
