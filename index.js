@@ -11,7 +11,7 @@ const pkg = require('./package.json');
 
 
 function setLang(lang) {
-  pkg.lang = lang;
+  pkg.config.lang = lang;
 
   fs.writeFileSync(
     path.resolve(__dirname, './package.json'),
@@ -36,7 +36,7 @@ if (program.args.length === 0) {
   process.exit();
 }
 
-googleTTS(program.args[0], pkg.lang)
+googleTTS(program.args[0], pkg.config.lang)
   .then(function (url) {
     console.log(url);
 
