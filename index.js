@@ -2,7 +2,6 @@
 
 'use strict';
 
-const co = require('co');
 const fs = require('fs');
 const path = require('path');
 const ncp = require('copy-paste');
@@ -46,20 +45,18 @@ if (program.args.length === 0) {
 }
 
 // start
-co(function * () {
-  const lang = pkg.config.lang;
-  const apiKey = pkg.config.apiKey;
-  const sentence = program.args[0];
+const sentence = program.args[0];
+googleTTS(sentence, pkg.config.lang)
+  .then(function (url) {
+    const key = pkg.config.apiKey;
+    return (typeof key === 'string' && key.length > 0) ? urlshortener(key, url) : url
+  })
+  .then(function (shortUrl) {
+    // show result
+    console.log(sentence);
+    console.log(shortUrl);
 
-  let url = yield googleTTS(sentence, lang);
-  if (typeof apiKey === 'string' && apiKey.length > 0) {
-    url = yield urlshortener(apiKey, url);
-  }
-
-  // show url
-  console.log(url);
-
-  // copy url to system clipboard
-  ncp.copy(url);
-})
-.catch(console.error);
+    // copy url to system clipboard
+    ncp.copy(shortUrl);
+  })
+  .catch(console.error);
